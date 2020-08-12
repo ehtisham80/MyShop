@@ -11,18 +11,18 @@ namespace MyShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
+        InMemoryRepository<Product> context;
+        InMemoryRepository<ProductCategory> productCategories;
 
         public ProductManagerController()
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = new InMemoryRepository<Product>();
+            productCategories = new InMemoryRepository<ProductCategory>();
         }
         // GET: ProdcutManager
         public ActionResult Index()
         {
-            List<Product> products = context.Colletion().ToList();
+            List<Product> products = context.Collection().ToList();
             return View(products);
         }
         public ActionResult Create()
@@ -30,7 +30,7 @@ namespace MyShop.WebUI.Controllers
             ProductManagerViewModel viewModel = new ProductManagerViewModel();
 
             viewModel.Product = new Product();
-            viewModel.ProductCategories = productCategories.Colletion();
+            viewModel.ProductCategories = productCategories.Collection();
             return View(viewModel);
         }
         [HttpPost]
@@ -58,7 +58,7 @@ namespace MyShop.WebUI.Controllers
             {
                 ProductManagerViewModel viewModel = new ProductManagerViewModel();
                 viewModel.Product = product;
-                viewModel.ProductCategories = productCategories.Colletion();
+                viewModel.ProductCategories = productCategories.Collection();
                 return View(viewModel);
             }
         }
