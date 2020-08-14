@@ -1,10 +1,11 @@
 using MyShop.Core.Contracts;
+using System;
+using Unity;
 using MyShop.Core.Models;
 using MyShop.DataAccess.InMemory;
 using MyShop.DataAccess.SQL;
-using System;
-
-using Unity;
+using MyShop.WebUI.Controllers;
+using Unity.Injection;
 
 namespace MyShop.WebUI
 {
@@ -48,6 +49,7 @@ namespace MyShop.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
         }
     }
 }
