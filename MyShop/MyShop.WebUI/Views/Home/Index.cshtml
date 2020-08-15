@@ -9,7 +9,7 @@
     <h4>Filter by Category</h4>
     <div class="list-group">
         @Html.ActionLink("All","Index", null ,new {@class = Request["Category"]==null? "list-group-item active":"list-group-item" })
-        @foreach (var cat in Model.Productcategories)
+        @foreach (var cat in Model.Productcategories)  
         {
             @Html.ActionLink(cat.Category, "Index", new { Category=cat.Category}, new {@class = Request["Category"] ==cat.Category ? "list-group-item active": "list-group-item" })
         }
