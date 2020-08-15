@@ -116,8 +116,7 @@ namespace MyShop.Services
                                }
                                ).ToList();
                 return results;
-            }
-            else
+            }else
             {
                 return new List<BasketItemViewModel>();
             }
@@ -127,7 +126,7 @@ namespace MyShop.Services
             Basket basket = GetBasket(httpContext, false);
             BasketSummaryViewModel model = new BasketSummaryViewModel(0, 0);
             if (basket != null)
-            {
+            {               
                 int? basketCount = (from item in basket.BasketItems
                                     select item.Quantity).Sum();
 

@@ -6,6 +6,7 @@ using MyShop.DataAccess.InMemory;
 using MyShop.DataAccess.SQL;
 using MyShop.WebUI.Controllers;
 using Unity.Injection;
+using MyShop.Services;
 
 namespace MyShop.WebUI
 {
@@ -50,6 +51,9 @@ namespace MyShop.WebUI
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
             container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<IRepository<Basket>,SQLRepository<Basket>>();
+            container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
+            container.RegisterType<IBasketService, BasketService>();
         }
     }
 }
